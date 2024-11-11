@@ -1,6 +1,7 @@
 require('dotenv').config();
 var express = require('express');
 var axios = require('axios');
+var path = require('path');
 var app = express();
 
 // set the view engine to ejs
@@ -9,19 +10,17 @@ app.set('view engine', 'ejs');
 // use JSON to parse payloads
 app.use(express.json()); // Add this line to parse JSON payloads
 
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
+
 // use res.render to load up an ejs view file
 
 // index page
 app.get('/', function(req, res) {
-  var mascots = [
-    { name: 'Sammy', organization: "DigitalOcean", birth_year: 2012},
-    { name: 'Tux', organization: "Linux", birth_year: 1996},
-    { name: 'Moby Dock', organization: "Docker", birth_year: 2013}
-  ];
-  var tagline = "No programming concept is complete without a cute animal mascot.";
+  
+  var tagline = "If you're reading this, it should be! Just to double check, submit the form below.";
 
   res.render('pages/main', {
-    mascots: mascots,
     tagline: tagline,
     message: req.query.message || null
   });
@@ -49,7 +48,7 @@ app.post('/webhook-form', async (req, res) => {
     });
 
     if (response.status === 200) {
-      res.redirect('/?message=Webhook scheduled successfully!');
+      res.redirect(`/?message=Webhook scheduled for ${time} seconds!`);
     } else {
       res.status(500).send('Failed to schedule webhook. Please try again.');
     }
