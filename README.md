@@ -1,7 +1,8 @@
 # Onboarding App with User Form
 
 ## Overview
-This project is a simple onboarding application using Express, EJS, and Bootstrap. It provides a form where users can input their details, and the application tracks their progress through integration with a backend API. The purpose is to create a smooth onboarding experience, allowing participants to complete setup tasks like connecting GitHub accounts and configuring webhooks.
+This project is a simple onboarding application using Express, EJS, and Bootstrap. It provides a boilerplate for basic features like user inputs and a button. 
+This app is designed to accompany this [onboarding guide](https://trustly.notion.site/Product-Tech-Workshop-1376fac3e0c2804b8881d26a50e20208). If you haven't read that, start there.
 
 ## Features
 - User-friendly form to collect participant information.
@@ -10,7 +11,6 @@ This project is a simple onboarding application using Express, EJS, and Bootstra
 - Track progress, such as GitHub account setup and webhook testing.
 
 ## Prerequisites
-This app is designed to accompany this [onboarding guide](https://trustly.notion.site/Product-Tech-Workshop-1376fac3e0c2804b8881d26a50e20208). If you haven't read that, start there.
 
 - **Node.js**: Ensure you have Node.js installed.
 - **Backend API Server**: Requires the backend server (`feedback_api_server`) to track and store progress.
