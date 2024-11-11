@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+  <%- include('../partials/header'); %>
+</header>
+
+<main>
+  <div class="jumbotron">
+    <h1>This is an app</h1>
+    <p>We need Trustly so people can pay for things!</p>
+
+    <h2>Variable</h2>
+    <p><%= tagline %></p>
+
+    <div class="input-section">
+      <form id="userForm">
+        <div class="form-group">
+          <label for="userInput">Enter something:</label>
+          <input type="text" id="userInput" name="userInput" class="form-control" placeholder="Type here...">
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Submit</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>
