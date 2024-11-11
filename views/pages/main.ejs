@@ -1,38 +1,92 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <%- include('../partials/head'); %>
 </head>
+
+<script>
+  async function submitWebhookForm() {
+  const userId = document.getElementById('userId').value;
+  const ngrokUrl = document.getElementById('ngrokUrl').value;
+  const time = document.getElementById('time').value;
+
+  console.log(JSON.stringify({ userId, ngrokUrl, time }));
+
+  if (!userId || !ngrokUrl || !time) {
+      alert('All fields are required!');
+      return;
+  }
+
+  try {
+      const response = await fetch('/webhook-form', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ userId, ngrokUrl, time }),
+      });
+
+      if (response.redirected) {
+          window.location.href = response.url; // Redirect to the new page if the server sends a redirect response
+      } else {
+          const result = await response.text();
+          alert(result);
+      }
+  } catch (error) {
+      console.error('Error scheduling webhook:', error);
+      alert('An error occurred while scheduling the webhook.');
+  }
+}
+</script>
+
 <body class="container">
 
-<header>
-  <%- include('../partials/header'); %>
-</header>
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
 
-<main>
-  <div class="jumbotron">
-    <h1>This is an app</h1>
-    <p>We need Trustly so people can pay for things!</p>
+  <main>
+    <div class="jumbotron">
+      <h1>This is an app</h1>
+      <p>We need Trustly so people can pay for things!</p>
 
-    <h2>Variable</h2>
-    <p><%= tagline %></p>
+      <h2>Variable</h2>
+      <p>
+        <%= tagline %>
+      </p>
 
-    <div class="input-section">
-      <form id="userForm">
-        <div class="form-group">
-          <label for="userInput">Enter something:</label>
-          <input type="text" id="userInput" name="userInput" class="form-control" placeholder="Type here...">
+      <% if (message) { %>
+        <div class="alert alert-success">
+          <%= message %>
         </div>
-        <button type="submit" class="btn btn-primary mt-2">Submit</button>
-      </form>
-    </div>
-  </div>
-</main>
+      <% } %>
 
-<footer>
-  <%- include('../partials/footer'); %>
-</footer>
+          <div class="container mt-5">
+            <div class="form-group">
+              <label for="userId">User ID</label>
+              <input type="text" class="form-control" id="userId" name="userId" placeholder="Enter User ID" required>
+            </div>
+            <div class="form-group mt-3">
+              <label for="ngrokUrl">Ngrok URL</label>
+              <input type="text" class="form-control" id="ngrokUrl" name="ngrokUrl" placeholder="Enter Ngrok URL"
+                required>
+            </div>
+            <div class="form-group mt-3">
+              <label for="time">Time (seconds)</label>
+              <input type="number" class="form-control" id="time" name="time" placeholder="Enter time in seconds"
+                required>
+            </div>
+            <button onclick="submitWebhookForm()" class="btn btn-primary mt-4">Schedule Webhook</button>
+          </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
 
 </body>
+
 </html>
