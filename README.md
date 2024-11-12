@@ -5,7 +5,6 @@ This project is a simple onboarding application using Express, EJS, and Bootstra
 This app is designed to accompany this [onboarding guide](https://trustly.notion.site/Product-Tech-Workshop-1376fac3e0c2804b8881d26a50e20208). If you haven't read that, start there.
 
 ## Features
-- User-friendly form to collect participant information.
 - JavaScript-based form handling with dynamic feedback.
 - Integration with a backend API for storing and updating user data.
 - Track progress, such as GitHub account setup and webhook testing.
