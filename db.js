@@ -2,7 +2,7 @@
 const axios = require('axios');
 
 class TransactionsClient {
-    constructor(baseURL = process.env.BASE_URL) {
+    constructor(baseURL = process.env.API_BASE_URL) {
     if (!baseURL) {
       throw new Error('Base URL is required');
     }
@@ -57,8 +57,3 @@ class TransactionsClient {
 }
 
 module.exports = TransactionsClient;
-
-// Usage in an express app:
-// const TransactionsClient = require('./transactionsClient');
-// const transactionsClient = new TransactionsClient('http://localhost:3000');
-// transactionsClient.createTransaction({ transactionId: '123', userId: 456 });
