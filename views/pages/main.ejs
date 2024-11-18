@@ -18,34 +18,9 @@
       <h1>This is an app</h1>
       <p>We need Trustly so people can pay for things!</p>
 
-      <h3>Is this thing on?</h3>
       <p>
         <%= tagline %>
       </p>
-
-      <% if (message) { %>
-        <div class="alert alert-success">
-          <%= message %>
-        </div>
-      <% } %>
-
-          <div class="container mt-5">
-            <div class="form-group">
-              <label for="userId">User ID</label>
-              <input type="text" class="form-control" id="userId" name="userId" placeholder="Enter User ID" required>
-            </div>
-            <div class="form-group mt-3">
-              <label for="ngrokUrl">Ngrok URL</label>
-              <input type="text" class="form-control" id="ngrokUrl" name="ngrokUrl" placeholder="Enter Ngrok URL"
-                required>
-            </div>
-            <div class="form-group mt-3">
-              <label for="time">Time (seconds)</label>
-              <input type="number" class="form-control" id="time" name="time" placeholder="Enter time in seconds"
-                required>
-            </div>
-            <button onclick="submitWebhookForm()" class="btn btn-primary mt-4">Schedule Webhook</button>
-          </div>
 
     </div>
   </main>

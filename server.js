@@ -4,6 +4,10 @@ var axios = require('axios');
 var path = require('path');
 var app = express();
 
+const accessId = process.env.ACCESS_ID;
+const accessKey = process.env.ACCESS_KEY;
+const merchantId = process.env.MERCHANT_ID;
+
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
@@ -13,12 +17,17 @@ app.use(express.json()); // Add this line to parse JSON payloads
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// use res.render to load up an ejs view file
+// Make environment variables available to all templates
+app.use((req, res, next) => {
+  res.locals.accessId = accessId;
+  res.locals.merchantId = merchantId;
+  next();
+});
 
 // index page
 app.get('/', function(req, res) {
   
-  var tagline = "If you're reading this, it should be! Just to double check, submit the form below.";
+  var tagline = "Welcome to Acme Co. where we'll do anything to get your business!";
 
   res.render('pages/main', {
     tagline: tagline,
@@ -29,33 +38,6 @@ app.get('/', function(req, res) {
 // about page
 app.get('/about', function(req, res) {
   res.render('pages/about');
-});
-
-// Form submission route
-app.post('/webhook-form', async (req, res) => {
-  const { userId, ngrokUrl, time } = req.body;
-
-  if (!userId || !ngrokUrl || !time) {
-    return res.status(400).send('All fields are required.');
-  }
-
-  const apiUrl = `${process.env.API_BASE_URL}/user/${userId}/webhook`;
-
-  try {
-    const response = await axios.post(apiUrl, {
-      ngrokUrl: `${ngrokUrl}/webhook-listener`,
-      delaySeconds: parseInt(time),
-    });
-
-    if (response.status === 200) {
-      res.redirect(`/?message=Webhook scheduled for ${time} seconds!`);
-    } else {
-      res.status(500).send('Failed to schedule webhook. Please try again.');
-    }
-  } catch (error) {
-    console.error('Error scheduling webhook:', error.message);
-    res.status(500).send('An error occurred while scheduling the webhook.');
-  }
 });
 
 // Webhook listener route
