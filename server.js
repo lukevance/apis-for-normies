@@ -7,12 +7,18 @@ var app = express();
 const accessId = process.env.ACCESS_ID;
 const accessKey = process.env.ACCESS_KEY;
 const merchantId = process.env.MERCHANT_ID;
+const baseURL = process.env.API_BASE_URL;
 
+const TransactionsClient = require('./db');
+const transactionsClient = new TransactionsClient(baseURL, 5);
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
 // use JSON to parse payloads
 app.use(express.json()); // Add this line to parse JSON payloads
+
+// Use URL-encoded middleware to parse incoming URL-encoded payloads
+app.use(express.urlencoded({ extended: true }));
 
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
