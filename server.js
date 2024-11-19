@@ -12,6 +12,7 @@ const userId = process.env.USER_ID;
 
 const TransactionsClient = require('./db');
 const transactionsClient = new TransactionsClient(baseURL, userId);
+
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
@@ -30,6 +31,11 @@ app.use((req, res, next) => {
   res.locals.merchantId = merchantId;
   next();
 });
+
+
+// ---------- Ignore everything above this line ---------------
+
+
 
 // index page
 app.get('/', function(req, res) {
