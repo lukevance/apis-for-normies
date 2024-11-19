@@ -8,9 +8,10 @@ const accessId = process.env.ACCESS_ID;
 const accessKey = process.env.ACCESS_KEY;
 const merchantId = process.env.MERCHANT_ID;
 const baseURL = process.env.API_BASE_URL;
+const userId = process.env.USER_ID;
 
 const TransactionsClient = require('./db');
-const transactionsClient = new TransactionsClient(baseURL, 5);
+const transactionsClient = new TransactionsClient(baseURL, userId);
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
