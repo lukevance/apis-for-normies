@@ -2,19 +2,24 @@
 const axios = require('axios');
 
 class TransactionsClient {
-    constructor(baseURL = process.env.API_BASE_URL) {
+  constructor(baseURL = process.env.BASE_URL, userId = process.env.USER_ID) {
     if (!baseURL) {
       throw new Error('Base URL is required');
+    }
+    if (!userId) {
+      throw new Error('User ID is required');
     }
     this.api = axios.create({
       baseURL,
     });
+    this.userId = userId;
   }
 
   async createTransaction(transactionData) {
-    if (!transactionData.transactionId || !transactionData.userId) {
-      throw new Error('transactionId and userId are required');
+    if (!transactionData.transactionId) {
+      throw new Error('transactionId is required');
     }
+    transactionData.userId = transactionData.userId || this.userId;
 
     try {
       const response = await this.api.post('/transactions', transactionData);
@@ -25,14 +30,14 @@ class TransactionsClient {
     }
   }
 
-  async getTransactionById(transactionId, userId) {
-    if (!transactionId || !userId) {
-      throw new Error('transactionId and userId are required');
+  async getTransactionById(transactionId) {
+    if (!transactionId) {
+      throw new Error('transactionId is required');
     }
 
     try {
       const response = await this.api.get(`/transactions/${transactionId}`, {
-        params: { userId },
+        params: { userId: this.userId },
       });
       return response.data;
     } catch (error) {
@@ -42,9 +47,10 @@ class TransactionsClient {
   }
 
   async updateTransactionById(transactionId, updatedData) {
-    if (!updatedData.userId || !updatedData.splitToken) {
-      throw new Error('splitToken and userId are required');
+    if (!updatedData.splitToken) {
+      throw new Error('splitToken is required');
     }
+    updatedData.userId = updatedData.userId || this.userId;
 
     try {
       const response = await this.api.patch(`/transactions/${transactionId}`, updatedData);
@@ -57,3 +63,11 @@ class TransactionsClient {
 }
 
 module.exports = TransactionsClient;
+
+// Usage in an express app:
+// const TransactionsClient = require('./transactionsClient');
+// const transactionsClient = new TransactionsClient(process.env.BASE_URL, process.env.USER_ID);
+// transactionsClient.createTransaction({ transactionId: '123' });
+
+
+/* Return page EJS template */
