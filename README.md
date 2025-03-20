@@ -1,83 +1,66 @@
-# Onboarding App with User Form
+# Welcome to the Sample App for APIs for Normies! 👋
 
-## Overview
-This project is a simple onboarding application using Express, EJS, and Bootstrap. It provides a boilerplate for basic features like user inputs and a button. 
-This app is designed to accompany this [onboarding guide](https://trustly.notion.site/Product-Tech-Workshop-1376fac3e0c2804b8881d26a50e20208). If you haven't read that, start there.
+Hey there! This repository holds the super simple web app used in the "APIs for Normies" tutorial. It's here to help you see how APIs and webhooks work in a real, albeit tiny, application. Think of it as your playground to connect the dots! 🪄
 
-## Features
-- User-friendly form to collect participant information.
-- JavaScript-based form handling with dynamic feedback.
-- Integration with a backend API for storing and updating user data.
-- Track progress, such as GitHub account setup and webhook testing.
+> If you haven't gone through the first 2 parts of the tutorial, I recommend you do that first. If you're relatively familiar with using APIs and webhooks to build web apps (what are you doing here?) feel free to jump in and run the app!
 
-## Prerequisites
+This app is designed to be your trusty sidekick as you go through the tutorial. It lets you:
 
-- **Node.js**: Ensure you have Node.js installed.
-- **Backend API Server**: Requires the backend server (`feedback_api_server`) to track and store progress.
-- **Environment File (.env)**: Create a `.env` file to store environment variables such as the backend API URL.
-  - `API_BASE_URL`: The base URL of the backend API.
+* **Connect APIs to user-friendly forms and buttons:** You can make calls to get info and send data – just like we practiced!
+* **Listen for events via webhook whispers:** See how apps can get notifications (webhooks) when something cool happens.
 
-## Getting Started
+Basically, it's a hands-on way to make all those API and webhook concepts from the tutorial click!
 
-1. **Clone the Repository**:
-   ```bash
-   git clone <repository-url>
-   cd onboarding_app
-   ```
+## Ready to Play? 🕹️
 
-2. **Install Dependencies**:
-   ```bash
-   npm install
-   ```
+Before we dive in, make sure you've got these goodies installed on your computer:
 
-3. **Create the .env File**:
-   Create a `.env` file in the root directory with the following variable:
-   ```
-   API_BASE_URL=http://localhost:3000
-   ```
+* **Node.js and npm:** This app speaks JavaScript, so you'll need Node.js to run it. npm comes along for the ride and helps manage things. Grab them from [Node.js Downloads](https://nodejs.org/).
 
-4. **Run the App**:
-   ```bash
-   npm start
-   ```
+## Let's Get This Party Started! 🎉
 
-5. **Access the App**:
-   The app should be running at `http://localhost:8080`.
+1.  **Grab the Code:** First things first, let's get the app onto your computer. You can do this by either:
+    ```bash
+    git clone [https://github.com/lukevance/apis-for-normies.git](https://github.com/lukevance/apis-for-normies.git)
+    ```
+    ...or by downloading the ZIP file from the top of the page if you're not a Git ninja (yet!).
 
-## Form Submission Flow
-- The app includes a form where users input their `User ID`, `ngrok URL`, and `time` in seconds.
-- Upon submission, JavaScript makes an API call to the backend to schedule a webhook.
-- Users will receive dynamic feedback directly in the app, indicating whether the webhook was scheduled successfully.
+2.  **Step Inside the App Folder:** Navigate into the directory where you just cloned or unzipped the files:
+    ```bash
+    cd apis-for-normies
+    ```
 
-## Pages and Functionality
+3.  **Install the Magic Ingredients:** This app relies on a few helpful tools. Let's install them using npm:
+    ```bash
+    npm install
+    ```
+    This command will fetch and install everything we need.
 
-### Main Page (`/`)
-- **Description**: Displays a simple welcome page with a form to collect user details.
-- **Fields**:
-  - `User ID`: Enter the unique user ID provided during onboarding.
-  - `ngrok URL`: The ngrok URL to test webhook delivery.
-  - `Time (seconds)`: Delay in seconds for when the webhook will be delivered.
-- **Button**: `Schedule Webhook` - Sends data to the backend API to schedule the webhook.
+4.  **Time for a Little Secret Setup:**
+    * Make a copy of the file named `.example.env` and rename the copy to `.env`.
+    * Open up the `.env` file. You'll see a line that looks something like `API_BASE_URL=...`. Replace the `...` with the API address we're using in the tutorial:
+        ```bash
+        API_BASE_URL=https://this-is-not-the-real-url.com/api
+        # We'll adjust some of the other settings later in the tutorial! 😉
+        ```
+    * Don't forget to save your changes!
 
-### About Page (`/about`)
-- **Description**: A simple page to describe the purpose of the onboarding app.
+## Fire It Up! 🔥
 
-## Technologies Used
-- **Node.js & Express**: Backend server to serve views and handle routing.
-- **EJS**: Templating engine for rendering dynamic HTML views.
-- **Bootstrap**: For styling the user interface and form components.
-- **JavaScript**: Handles form submission and feedback for users.
+1.  **Start the Engine:** In your terminal, run this command to get the app going:
+    ```bash
+    npm start
+    ```
+    This will launch the web server – keep an eye on your terminal for any messages!
 
-## Development Notes
-- The form submits user data to the backend API (`feedback_api_server`) using JavaScript `fetch()`.
-- Make sure to start both the backend server and this onboarding app concurrently for everything to work smoothly.
-- This app is intended to guide users through a setup process, including verifying GitHub usernames and configuring webhook integrations.
+2.  **Take a Peek:** Open your favorite web browser and head over to `http://localhost:8080/`. You should see a super simple webpage waiting for you.
+
+3. **Follow the instructions:** Head over to [APIs for Normies](https://provolove.notion.site/APIs-for-Normies-169e51fa9e9b81dfb610e00fecf1a84a) for the final steps!
+
+## Contributing? 🤔
+
+If you have ideas for improving this tutorial or adding to it, feel free to open an issue or a pull request! 😊
 
 ## License
-This project is open source and available under the [MIT License](LICENSE).
 
-## Contributions
-Contributions are welcome! Feel free to fork this repository and create pull requests to improve the onboarding experience.
-
-If you have any questions or encounter issues, please create an issue on the repository.
-
+MIT License - go ahead and explore! 🤓
