@@ -1,11 +1,11 @@
 async function submitWebhookForm() {
     const userId = document.getElementById('userId').value;
-    const ngrokUrl = document.getElementById('ngrokUrl').value;
+    const webhookUrl = document.getElementById('webhookUrl').value;
     const time = document.getElementById('time').value;
   
-    console.log(JSON.stringify({ userId, ngrokUrl, time }));
+    console.log(JSON.stringify({ userId, webhookUrl, time }));
   
-    if (!userId || !ngrokUrl || !time) {
+    if (!userId || !webhookUrl || !time) {
         alert('All fields are required!');
         return;
     }
@@ -16,7 +16,7 @@ async function submitWebhookForm() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ userId, ngrokUrl, time }),
+            body: JSON.stringify({ userId, webhookUrl, time }),
         });
   
         if (response.redirected) {

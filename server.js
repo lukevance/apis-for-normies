@@ -33,18 +33,21 @@ app.get('/about', function(req, res) {
 
 // Form submission route
 app.post('/webhook-form', async (req, res) => {
-  const { userId, ngrokUrl, time } = req.body;
+  const { userId, webhookUrl, time } = req.body;
 
-  if (!userId || !ngrokUrl || !time) {
+  if (!userId || !webhookUrl || !time) {
     return res.status(400).send('All fields are required.');
   }
 
-  const apiUrl = `${process.env.API_BASE_URL}/user/${userId}/webhook`;
-
+  const apiUrl = `${process.env.API_BASE_URL}/users/${userId}/webhook`;
+  const demoAppIdString = process.env.REPLIT_USER ?  `user-${process.env.REPLIT_USER}` : `user-${process.env.USER}+${process.env.HOSTNAME}`
+  
   try {
+    console.log(apiUrl);
     const response = await axios.post(apiUrl, {
-      ngrokUrl: `${ngrokUrl}/webhook-listener`,
+      webhookUrl: `${webhookUrl}/webhook-listener`,
       delaySeconds: parseInt(time),
+      demoAppId: demoAppIdString
     });
 
     if (response.status === 200) {
