@@ -1,8 +1,8 @@
-# Welcome to the Sample App for APIs for Normies! 👋
+# Welcome to APIs for Normies! 👋
 
 Hey there! This repository holds the super simple web app used in the "APIs for Normies" tutorial. It's here to help you see how APIs and webhooks work in a real, albeit tiny, application. Think of it as your playground to connect the dots! 🪄
 
-> If you haven't gone through the first 2 parts of the tutorial, I recommend you do that first. If you're relatively familiar with using APIs and webhooks to build web apps (what are you doing here?) feel free to jump in and run the app!
+> If you haven't gone through the first 2 parts of [the tutorial](https://provolove.notion.site/APIs-for-Normies-169e51fa9e9b81dfb610e00fecf1a84a), I recommend you do that first. If you're relatively familiar with using APIs and webhooks to build web apps (what are you doing here?) feel free to jump in and run the app!
 
 This app is designed to be your trusty sidekick as you go through the tutorial. It lets you:
 
@@ -53,7 +53,7 @@ Before we dive in, make sure you've got these goodies installed on your computer
     ```
     This will launch the web server – keep an eye on your terminal for any messages!
 
-2.  **Take a Peek:** Open your favorite web browser and head over to `http://localhost:8080/`. You should see a super simple webpage waiting for you.
+2.  **Take a Peek:** Open your favorite web browser and head over to `http://localhost:8080/`. You should see a super simple webpage with a couple text boxes and a button waiting for you.
 
 3. **Follow the instructions:** Head over to [APIs for Normies](https://provolove.notion.site/APIs-for-Normies-169e51fa9e9b81dfb610e00fecf1a84a) for the final steps!
 
