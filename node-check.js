@@ -18,7 +18,7 @@ if (!userId) {
         const npmVersion = execSync('npm -v').toString().trim();
 
         // Prepare API endpoint and payload
-        const apiUrl = `${process.env.API_BASE_URL}/user/${userId}/node-check`;
+        const apiUrl = `${process.env.API_BASE_URL}/users/${userId}/node-check`;
         const payload = {
             nodeVersion,
             npmVersion
