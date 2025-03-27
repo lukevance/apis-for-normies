@@ -1,7 +1,7 @@
 {
-  "name": "trustly-product-training",
+  "name": "apis-for-normies-tutorial",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple express app for learning about and testing APIs and webhooks.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
