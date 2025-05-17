@@ -19,9 +19,11 @@ Before we dive in, make sure you've got these goodies installed on your computer
 
 ## Let's Get This Party Started! 🎉
 
+> Note: If you don't have root access on the device you're using to read this, don't worry! It's 2025, you can run this app from a browser on your iPad, Chromebook or the library desktop! There are lots of great online tools for this, my favorite is [Repl.it](https://repl.it) but you can also fork this repo and run it from [Github Codespaces](https://github.com/features/codespaces).
+
 1.  **Grab the Code:** First things first, let's get the app onto your computer. You can do this by either:
     ```bash
-    git clone [https://github.com/lukevance/apis-for-normies.git](https://github.com/lukevance/apis-for-normies.git)
+    git clone https://github.com/lukevance/apis-for-normies.git
     ```
     ...or by downloading the ZIP file from the top of the page if you're not a Git ninja (yet!).
 
